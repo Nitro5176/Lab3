@@ -20,24 +20,21 @@ void numOfEmployees(int seats[], int size){
 		seats[i] = temp;
 	}
 }
-void numOfDepartments()
-
-	{
-		int numOfDep;
-			printf("Enter the number of departments you wish to register: ");
-			scanf("%d", &numOfDep);
-			numOfDep++;
-			return numOfDep;
-		}
+void numOfDepartments(){
+	int numOfDep;
+	printf("Enter the number of departments you wish to register: ");
+	scanf("%d", &numOfDep);
+	numOfDep++;
+	return numOfDep;
 	}
 
 void menu(){
 
-		prinf("*****Menu*****\n");
-		prinf("1. Add an employee to a department\n");
-		prinf("2. Remove an employee to a department\n");
-		prinf("3.Display the Association Table\n");
-		prinf("4.Exit program\n");
+	prinf("*****Menu*****\n");
+	prinf("1. Add an employee to a department\n");
+	prinf("2. Remove an employee to a department\n");
+	prinf("3.Display the Association Table\n");
+	prinf("4.Exit program\n");
 
 }
 
