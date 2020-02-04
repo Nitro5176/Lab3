@@ -20,7 +20,7 @@ void numOfEmployees(int seats[], int size){
 		seats[i] = temp;
 	}
 }
-void numOfDepartments(){
+int numOfDepartments(){
 	int numOfDep;
 	printf("Enter the number of departments you wish to register: ");
 	scanf("%d", &numOfDep);
@@ -30,11 +30,11 @@ void numOfDepartments(){
 
 void menu(){
 
-	prinf("*****Menu*****\n");
-	prinf("1. Add an employee to a department\n");
-	prinf("2. Remove an employee to a department\n");
-	prinf("3.Display the Association Table\n");
-	prinf("4.Exit program\n");
+	printf("*****Menu*****\n");
+	printf("1. Please enter the size of the departments. \n");
+	printf("2. Please enter the amount of employee\n");
+	printf("3. Display the Association Table\n");
+	printf("4.Exit program\n");
 
 }
 
@@ -45,20 +45,20 @@ int employeeSize(){
 	return number;
 }
 
+void displayTable(){
+
+}
+
 
 int main(void) {
 	setvbuf(stdout, NULL, _IONBF, 0);
 	setvbuf(stderr, NULL, _IONBF, 0);
 
-	int sizeOfArray = employeeSize();
+	int sizeOfArray;
+	int sizeOfDep;
 
-	int arrayEmployee[sizeOfArray];
-
-	numOfEmployees(arrayEmployee, sizeOfArray);
 
 	//department array
-
-	char Departments[numberOfDepartments()];
 
 
 	//Menu options
@@ -67,6 +67,27 @@ int main(void) {
 		menu();
 		printf("Select menu option: ");
 		scanf("%d", &menu);
+
+		if(menu == 1){
+			sizeOfDep = numbersOfDepartments();
+			char departments[sizeOfDep];
+			namesOfDepartments();
+
+		}
+		else if (menu == 2){
+			sizeOfArray = employeeSize();
+			int arrayEmployee[sizeOfArray];
+			numOfEmployees(arrayEmployee, sizeOfArray);
+		}
+		else if(menu == 3){
+			displayTable();
+		}
+		else if(menu == 4){
+			printf("Exiting...\n");
+		}
+		else{
+			printf("Please try again.\n");
+		}
 	}
 
 
