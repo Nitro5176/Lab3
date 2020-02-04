@@ -11,7 +11,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
+void namesOfDepartments(char *names[], int size){
+	char temp[7];
+	for(int i = 0; i < size; i++){
+		printf("Please enter a 6 letter department");
+		scanf("%s", temp);
+		names[i] = temp;
+	}
+}
 void numOfEmployees(int seats[], int size){
 	int temp;
 	for(int i = 0; i < size;i++){
@@ -24,15 +31,14 @@ int numOfDepartments(){
 	int numOfDep;
 	printf("Enter the number of departments you wish to register: ");
 	scanf("%d", &numOfDep);
-	numOfDep++;
 	return numOfDep;
 	}
 
-void menu(){
+void displayMenu(){
 
 	printf("*****Menu*****\n");
-	printf("1. Please enter the size of the departments. \n");
-	printf("2. Please enter the amount of employee\n");
+	printf("1. Add employee to department\n");
+	printf("2. Remove an employee from department\n");
 	printf("3. Display the Association Table\n");
 	printf("4.Exit program\n");
 
@@ -45,48 +51,83 @@ int employeeSize(){
 	return number;
 }
 
-void displayTable(){
+void displayTable(char depIndex[], int employeeIndex[], int sizeDep, int sizeEmployee){
+	printf("\n\tEmployee\tDepartments\n");
+	for(int i = 0; i < sizeEmployee; i++){
+		for(int j = 0; j < sizeDep ; j++){
+			printf("\t%d\t\t%d\n", i, j);
+		}
+	}
+}
+
+void addEmptoDept(int employee[], int sizeEmp, char departments[], int sizeDep, int value[][]){
+	int empTemp;
+	int deptTemp;
+	printf("Enter the employee number you want to add");
+	scanf("%d", &empTemp);
+	printf("Enter the department number you want to add the employee to");
+	scanf("%d", &deptTemp);
+	for(int i = 0; i < sizeEmp;i++){
+		if(empTemp == employee[i]){
+
+	}
 
 }
 
+}
 
 int main(void) {
 	setvbuf(stdout, NULL, _IONBF, 0);
 	setvbuf(stderr, NULL, _IONBF, 0);
 
-	int sizeOfArray;
+	int sizeOfEmployee;
 	int sizeOfDep;
 
 
 	//department array
 
+	sizeOfDep = numOfDepartments();
+	char *departments[sizeOfDep];
+	for(int i = 0 ; i < sizeOfDep; i++){
+		departments[i] = (char*)malloc(sizeof(char)*8);
+	}
+	namesOfDepartments(&departments, sizeOfDep);
+
+	sizeOfEmployee = employeeSize();
+	int arrayEmployee[sizeOfEmployee];
+	numOfEmployees(arrayEmployee, sizeOfEmployee);
+
+
+
+	//creates a 2D array of values
+	int value[sizeOfDep][sizeOfEmployee];
+	for(int i= 0; i< sizeOfEmployee;i++){
+		value[i][0]= 0;
+
+
+	}
 
 	//Menu options
 	int menu =0;
 	while(menu != 4){
-		menu();
+		displayMenu();
 		printf("Select menu option: ");
 		scanf("%d", &menu);
 
 		if(menu == 1){
-			sizeOfDep = numbersOfDepartments();
-			char departments[sizeOfDep];
-			namesOfDepartments();
+			deptTemp(arrayEmployee,sizeOfEmployee,departments, numOfDepartments, value[sizeOfDep][sizeOfEmployee] );
+		}
+		else if(menu == 2){
 
 		}
-		else if (menu == 2){
-			sizeOfArray = employeeSize();
-			int arrayEmployee[sizeOfArray];
-			numOfEmployees(arrayEmployee, sizeOfArray);
-		}
 		else if(menu == 3){
-			displayTable();
+			displayTable(&departments, arrayEmployee, sizeOfDep, sizeOfEmployee);
 		}
 		else if(menu == 4){
 			printf("Exiting...\n");
 		}
 		else{
-			printf("Please try again.\n");
+			printf("Wrong input, please try again.\n")
 		}
 	}
 
