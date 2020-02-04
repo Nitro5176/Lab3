@@ -51,7 +51,7 @@ int employeeSize(){
 	return number;
 }
 
-void displayTable(char depIndex[], int employeeIndex[], int sizeDep, int sizeEmployee){
+void displayTable(char depIndex[], int employeeIndex[], int sizeDep, int sizeEmployee, int value[][]){
 	printf("\n\tEmployee\tDepartments\n");
 	for(int i = 0; i < sizeEmployee; i++){
 		for(int j = 0; j < sizeDep ; j++){
@@ -60,7 +60,7 @@ void displayTable(char depIndex[], int employeeIndex[], int sizeDep, int sizeEmp
 	}
 }
 
-void addEmptoDept(int employee[], int sizeEmp, char departments[], int sizeDep, int value[][]){
+void addEmptoDept(int employee[], int sizeEmp, char departments[], int sizeDep, int value[][n]){
 	int empTemp;
 	int deptTemp;
 	printf("Enter the employee number you want to add");
@@ -69,7 +69,9 @@ void addEmptoDept(int employee[], int sizeEmp, char departments[], int sizeDep, 
 	scanf("%d", &deptTemp);
 	for(int i = 0; i < sizeEmp;i++){
 		if(empTemp == employee[i]){
-
+			for(int j = 0; j < sizeDep; j++){
+				if(departments[j] == deptTemp);
+			}
 	}
 
 }
@@ -100,11 +102,13 @@ int main(void) {
 
 
 	//creates a 2D array of values
-	int value[sizeOfDep][sizeOfEmployee];
-	for(int i= 0; i< sizeOfEmployee;i++){
-		value[i][0]= 0;
 
+	int value[sizeOfDep+1][sizeOfEmployee];
+	for(int i= 0; i< sizeOfDep+1;i++){
+		for(int j = 0; j < sizeOfEmployee; j++){
+			value[i][j] = 0;
 
+		}
 	}
 
 	//Menu options
@@ -113,21 +117,27 @@ int main(void) {
 		displayMenu();
 		printf("Select menu option: ");
 		scanf("%d", &menu);
-
+		
+		//1. Add employee to department
 		if(menu == 1){
-			deptTemp(arrayEmployee,sizeOfEmployee,departments, numOfDepartments, value[sizeOfDep][sizeOfEmployee] );
+			deptTemp(arrayEmployee,sizeOfEmployee,departments, numOfDepartments, value);
 		}
+		
+		//2.Remove an employee from department
 		else if(menu == 2){
 
 		}
+		
+		//3. Display the Association Table
 		else if(menu == 3){
-			displayTable(&departments, arrayEmployee, sizeOfDep, sizeOfEmployee);
+			displayTable(&departments, arrayEmployee, sizeOfDep, sizeOfEmployee, value[][]);
 		}
+		//4. Exiting
 		else if(menu == 4){
 			printf("Exiting...\n");
 		}
 		else{
-			printf("Wrong input, please try again.\n")
+			printf("Wrong input, please try again.\n");
 		}
 	}
 
