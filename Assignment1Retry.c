@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "helper.h"
 
 void namesOfDepartments(char names[], int size){
@@ -51,6 +52,50 @@ int employeeSize(){
 	scanf("%d", &number);
 	return number;
 }
+int
+void addEmpToDept(int employee[], int sizeEmp, char departments[], int sizeDep, int *value[][10], int currentIndex){
+	int empTemp;
+	char deptTemp[7];
+	printf("Enter the employee number you want to add: ");
+	scanf("%d", &empTemp);
+	printf("Enter the department number you want to add the employee to: ");
+	scanf("%s", deptTemp);
+
+	for(int i = 0; i < sizeDep; i++){
+		printf("hi");
+
+		if(*deptTemp == departments[i]){
+			printf("hi");+
+			*value[0][currentIndex] = i;
+			if(empTemp == employee[i]){
+				*value[1][currentIndex] = i;
+				*value[2][currentIndex] = 1;
+				printf("hi");
+			}
+		}
+
+
+	}
+
+}
+void remEmpToDept(int employee[], int sizeEmp, char departments[], int sizeDep, int *value[][10], int currentIndex){
+	int empTemp;
+	char deptTemp[8];
+	printf("Enter the employee number you want to add: ");
+	scanf("%d", &empTemp);
+	printf("Enter the department number you want to add the employee to: ");
+	scanf("%s", deptTemp);
+
+	for(int i = 0; i < sizeDep; i++){
+		if(strcmp(deptTemp, departments[i])){
+			*value[1][currentIndex] = i;
+			if(empTemp == employee[i]){
+				*value[2][currentIndex] = 0;
+			}
+		}
+	}
+
+}
 
 
 
@@ -61,7 +106,7 @@ int main(void) {
 
 	size_t sizeOfEmployee;
 	size_t sizeOfDep;
-
+	int currentIndex = 0;
 
 	//department array
 
@@ -79,7 +124,7 @@ int main(void) {
 
 
 	//creates a 2D array of values
-	int values[sizeOfDep][sizeOfEmployee];
+	int values[sizeOfDep+1][sizeOfEmployee];
 	initilaize2DArray(*values, sizeOfDep, sizeOfEmployee);
 
 
@@ -92,17 +137,19 @@ int main(void) {
 
 		//1. Add employee to department
 		if(menu == 1){
-
+			addEmpToDept( arrayEmployee, sizeOfEmployee, departments, sizeOfDep+1, &values, currentIndex);
+			currentIndex++;
 		}
 
 		//2.Remove an employee from department
 		else if(menu == 2){
-
+			remEmpToDept( arrayEmployee, sizeOfEmployee, departments, sizeOfDep+1, &values, currentIndex);
+			currentIndex++;
 		}
 
 		//3. Display the Association Table
 		else if(menu == 3){
-			print2DArray(*values, sizeOfDep, sizeOfEmployee);
+			print2DArray(*values, sizeOfDep+1, sizeOfEmployee);
 		}
 		//4. Exiting
 		else if(menu == 4){
