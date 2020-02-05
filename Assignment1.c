@@ -104,18 +104,18 @@ void initializeValues(int *value, char dep[], int emp[], int depSize, int empSiz
 		}*/
 		for(int j = 0; j < depSize*empSize; j++){
 			if(i == 0){
-				if(temp == 2){
+				if(temp > 1){
 					temp = 0;
 					empIncrement++;
 				}
-				*(value+(i*empSize)+j) = empIncrement+50;
+				*(value+(i*empSize)+j) = empIncrement;
 			}
 			if(i == 1){
 				if(temp == depSize){
 					temp = 0;
 					depIncrement = 0;
 				}
-				*(value+(i*empSize)+j) = depIncrement+20;
+				*(value+(i*empSize+depSize)+j) = depIncrement;
 				depIncrement++;
 			}
 			//depIncrement++;
